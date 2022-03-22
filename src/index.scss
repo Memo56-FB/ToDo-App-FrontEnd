@@ -4,17 +4,23 @@
 @layer base {
 	body {
 		font-family: 'Josefin Sans', sans-serif;
-		@apply text-lg bg-Very-Dark-Blue;
+		@apply bg-Very-Dark-Blue;
 	}
 	input:-webkit-autofill,
 	input:-webkit-autofill:focus {
 		transition: background-color 600000s 0s, color 600000s 0s;
+		-webkit-transition: background-color 600000s 0s, color 600000s 0s;
+		-moz-transition: background-color 600000s 0s, color 600000s 0s;
+		-ms-transition: background-color 600000s 0s, color 600000s 0s;
+		-o-transition: background-color 600000s 0s, color 600000s 0s;
 	}
 }
 @layer components {
 	.todo-wrapper {
-		@apply flex gap-x-4 p-4 items-center;
+		@apply flex gap-x-4 p-3.5 items-center;
 		@apply bg-Very-Dark-Desaturated-Blue;
+		@apply border-b-[1px] border-Dark-Grayish-Blue;
+		@apply text-white text-base md:text-lg;
 	}
 	.todo-checked {
 		@apply bg-gradient-to-br from-gradient-1 to-gradient-2;
@@ -24,7 +30,7 @@
 		@apply w-[23px] aspect-square border-[1px] border-Dark-Grayish-Blue;
 	}
 	.todo__input {
-		@apply text-white placeholder:text-gray-500;
+		@apply placeholder:text-gray-500;
 		@apply focus:border-0 focus:outline-none;
 		@apply bg-transparent;
 	}

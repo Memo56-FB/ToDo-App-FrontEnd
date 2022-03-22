@@ -7,7 +7,7 @@ const NewTodo = () => {
 		setTodoChecked(!todoChecked)
 	}
 	return (
-		<label className='todo-wrapper rounded-md'>
+		<label className='todo-wrapper rounded-md border-0'>
 			<span
 				onClick={toggleCheckedTodo}
 				className={`rounded-full cursor-pointer ${
