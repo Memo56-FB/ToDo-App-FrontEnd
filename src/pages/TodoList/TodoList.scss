@@ -1,0 +1,10 @@
+.todo__filter {
+	@apply bg-Very-Dark-Desaturated-Blue text-Very-Dark-Grayish-Blue text-sm;
+	@apply flex justify-center rounded-md;
+	@apply p-3 mt-4 gap-x-4;
+	p {
+		@apply hover:text-Light-Grayish-Blue(hover);
+		@apply font-semibold;
+		@apply transition-colors duration-300 ease-in-out;
+	}
+}

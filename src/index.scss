@@ -19,15 +19,15 @@
 	.todo-wrapper {
 		@apply flex gap-x-4 p-3.5 items-center;
 		@apply bg-Very-Dark-Desaturated-Blue;
-		@apply border-b-[1px] border-Dark-Grayish-Blue;
-		@apply text-white text-base md:text-lg;
+		@apply border-b-[1px] border-Very-Dark-Grayish-Blue;
+		@apply text-white md:text-lg;
 	}
 	.todo-checked {
 		@apply bg-gradient-to-br from-gradient-1 to-gradient-2;
 		@apply py-[7px] px-1.5;
 	}
 	.todo-unchecked {
-		@apply w-[23px] aspect-square border-[1px] border-Dark-Grayish-Blue;
+		@apply w-[23px] aspect-square border-[1px] border-Very-Dark-Grayish-Blue;
 	}
 	.todo__input {
 		@apply placeholder:text-gray-500;

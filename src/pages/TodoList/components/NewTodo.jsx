@@ -3,12 +3,13 @@ import { useState } from 'react'
 const NewTodo = () => {
 	const [todoChecked, setTodoChecked] = useState(false)
 
-	const toggleCheckedTodo = () => {
+	const toggleCheckedTodo = e => {
+    e.preventDefault()
 		setTodoChecked(!todoChecked)
 	}
 	return (
 		<label className='todo-wrapper rounded-md border-0'>
-			<span
+			<button type='button'
 				onClick={toggleCheckedTodo}
 				className={`rounded-full cursor-pointer ${
 					todoChecked ? 'todo-checked' : 'todo-unchecked'
@@ -24,7 +25,7 @@ const NewTodo = () => {
 						/>
 					</svg>
 				)}
-			</span>
+			</button>
 			<input
 				type='text'
 				name='new'
