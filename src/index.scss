@@ -1,9 +1,37 @@
 @tailwind base;
 @tailwind components;
-@layer base {
-  body {
-    font-family: 'Josefin Sans', sans-serif;
-    @apply text-lg bg-Very-Dark-Blue;
-  }
-}
 @tailwind utilities;
+@layer base {
+	body {
+		font-family: 'Josefin Sans', sans-serif;
+		@apply text-lg bg-Very-Dark-Blue;
+	}
+	input:-webkit-autofill,
+	input:-webkit-autofill:focus {
+		transition: background-color 600000s 0s, color 600000s 0s;
+	}
+}
+@layer components {
+	.todo-wrapper {
+		@apply flex gap-x-4 p-4 items-center;
+		@apply bg-Very-Dark-Desaturated-Blue;
+	}
+	.todo-checked {
+		@apply bg-gradient-to-br from-gradient-1 to-gradient-2;
+		@apply py-[7px] px-1.5;
+	}
+	.todo-unchecked {
+		@apply w-[23px] aspect-square border-[1px] border-Dark-Grayish-Blue;
+	}
+	.todo__input {
+		@apply text-white placeholder:text-gray-500;
+		@apply focus:border-0 focus:outline-none;
+		@apply bg-transparent;
+	}
+}
+
+@layer utilities {
+	.padding-app {
+		@apply px-6 md:px-32 xl:px-[32%] 2xl:px-[36%];
+	}
+}

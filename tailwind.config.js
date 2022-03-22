@@ -5,8 +5,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        'gradient-1': 'hsl(192, 100%, 67%)',
+        'gradient-2': 'hsl(280, 87%, 65%)',
         'Bright-Blue': 'hsl(220, 98%, 61%)',
-        'Check-Background': 'linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%)',
         'Very-Dark-Blue': 'hsl(235, 21%,11%)',
         'Very-Dark-Desaturated-Blue': 'hsl(235,24%,19%)',
         'Light-Grayish-Blue': 'hsl(234, 39%, 85%)',
