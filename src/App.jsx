@@ -1,10 +1,11 @@
-import { Header } from './components/Header/Header'
+import { Route, Routes } from 'react-router-dom';
 import { TodoList } from './pages/TodoList/TodoList';
 function App() {
   return (
     <>
-      <Header />
-      <TodoList />
+      <Routes>
+        <Route path='/todos' element={<TodoList />} />
+      </Routes>
     </>
   );
 }
