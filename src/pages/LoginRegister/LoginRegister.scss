@@ -1,0 +1,11 @@
+.login-register__form {
+	@apply flex flex-col text-white gap-y-8;
+	label {
+		@apply flex flex-col;
+	}
+	input {
+		@apply bg-transparent;
+		@apply focus:outline-none;
+		@apply border-b-2 border-Light-Grayish-Blue;
+	}
+}
