@@ -1,6 +1,6 @@
-import { NewTodo } from './components/NewTodo'
-import { TodoFilters } from './components/TodoFilters'
-import { TodoItem } from './components/TodoItem'
+import { NewTodo } from './components/NewTodo/NewTodo'
+import { TodoFilters } from './components/TodoFilters/TodoFilters'
+import { TodoItem } from './components/TodoItem/TodoItem'
 
 import './TodoList.scss'
 
