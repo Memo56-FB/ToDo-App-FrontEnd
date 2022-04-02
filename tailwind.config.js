@@ -1,6 +1,6 @@
 module.exports = {
   content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
+    './src/**/*.{js,jsx,ts,tsx}'
   ],
   theme: {
     extend: {
@@ -13,9 +13,9 @@ module.exports = {
         'Light-Grayish-Blue': 'hsl(234, 39%, 85%)',
         'Light-Grayish-Blue(hover)': 'hsl(236, 33%,92%)',
         'Dark-Grayish-Blue': 'hsl(234, 11%, 52%)',
-        'Very-Dark-Grayish-Blue': 'hsl(233, 14%, 35%)',
+        'Very-Dark-Grayish-Blue': 'hsl(233, 14%, 35%)'
       }
-    },
+    }
   },
-  plugins: [],
+  plugins: []
 }

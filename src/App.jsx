@@ -1,7 +1,8 @@
-import { Route, Routes } from 'react-router-dom';
-import { LoginRegister } from './pages/LoginRegister/LoginRegister';
-import { TodoList } from './pages/TodoList/TodoList';
-function App() {
+import { Route, Routes } from 'react-router-dom'
+
+import { LoginRegister } from './pages/LoginRegister/LoginRegister'
+import { TodoList } from './pages/TodoList/TodoList'
+function App () {
   return (
     <>
       <Routes>
@@ -10,7 +11,7 @@ function App() {
         <Route path='/register' element={<LoginRegister />} />
       </Routes>
     </>
-  );
+  )
 }
 
-export default App;
+export default App
