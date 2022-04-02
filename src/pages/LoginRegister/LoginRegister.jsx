@@ -1,11 +1,16 @@
 import "./LoginRegister.scss"
 import { Header } from "../../components/Header/Header"
-import { NavLink } from "react-router-dom"
+import { NavLink, useLocation } from "react-router-dom"
+import { Register } from './components/Register/Register'
+import { Login } from './components/Login/Login'
 const LoginRegister = () => {
+  const location = useLocation()
+
 	let activeStyle = {
 		color: "hsl(192, 100%, 67%)"
 	}
 	const onActive = ({ isActive }) => (isActive ? activeStyle : undefined)
+
 	return (
 		<>
 			<Header />
@@ -17,24 +22,13 @@ const LoginRegister = () => {
 					<NavLink to={"/login"} style={onActive} >Login</NavLink>
 				</div>
 				<section className='bg-Very-Dark-Desaturated-Blue text-lg p-4 rounded-md'>
-					<form className='login-register__form'>
-						<label htmlFor='name'>
-							Name:
-							<input type='text' name='name' autoComplete='name' />
-						</label>
-						<label htmlFor='username'>
-							Username:
-							<input type='text' name='username' autoComplete='username' />
-						</label>
-						<label htmlFor='password'>
-							Password:
-							<input
-								type='password'
-								name='password'
-								autoComplete='new-password'
-							/>
-						</label>
-					</form>
+          {
+            location.pathname === '/register' && <Register />
+          }
+          {
+            location.pathname === '/login' && <Login />
+          }
+					
 				</section>
 			</main>
 		</>
