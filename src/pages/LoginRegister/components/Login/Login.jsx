@@ -1,7 +1,14 @@
+import { useContext } from 'react'
+
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
+
+import { UserContext } from '../../../../context/UserContext'
 
 const Login = () => {
   const { register, handleSubmit } = useForm()
+  const navigate = useNavigate()
+  const { setUserData } = useContext(UserContext)
 
   const fetchLogin = async (data) => {
     const API_URL = `${import.meta.env.VITE_API_URL}/api/login`
@@ -15,7 +22,11 @@ const Login = () => {
     }
     try {
       const fetchResponse = await fetch(API_URL, settings)
-      console.log(await fetchResponse.json())
+      const response = await fetchResponse.json()
+      if (fetchResponse.status === 200) {
+        setUserData(response)
+        navigate('/todos')
+      }
     } catch (err) {
       console.error(err)
     }

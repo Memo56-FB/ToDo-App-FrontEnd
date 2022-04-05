@@ -1,7 +1,9 @@
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 
 const Register = () => {
   const { register, handleSubmit } = useForm()
+  const navigate = useNavigate()
 
   const fetchRegister = async (data) => {
     const API_URL = `${import.meta.env.VITE_API_URL}/api/users`
@@ -16,7 +18,7 @@ const Register = () => {
 
     try {
       const fetchResponse = await fetch(API_URL, settings)
-      console.log(await fetchResponse.json())
+      if (fetchResponse.status === 201) navigate('/login')
     } catch (err) {
       return err
     }

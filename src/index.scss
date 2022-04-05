@@ -2,42 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 @layer base {
-	body {
-		font-family: 'Josefin Sans', sans-serif;
-		@apply bg-Very-Dark-Blue;
-	}
-	input:-webkit-autofill,
-	input:-webkit-autofill:focus {
-		transition: background-color 600000s 0s, color 600000s 0s;
-		-webkit-transition: background-color 600000s 0s, color 600000s 0s;
-		-moz-transition: background-color 600000s 0s, color 600000s 0s;
-		-ms-transition: background-color 600000s 0s, color 600000s 0s;
-		-o-transition: background-color 600000s 0s, color 600000s 0s;
-	}
+  body {
+    font-family: "Josefin Sans", sans-serif;
+    @apply bg-Very-Dark-Blue;
+  }
+  input:-webkit-autofill,
+  input:-webkit-autofill:focus {
+    transition: background-color 600000s 0s, color 600000s 0s;
+    -webkit-transition: background-color 600000s 0s, color 600000s 0s;
+    -moz-transition: background-color 600000s 0s, color 600000s 0s;
+    -ms-transition: background-color 600000s 0s, color 600000s 0s;
+    -o-transition: background-color 600000s 0s, color 600000s 0s;
+  }
 }
 @layer components {
-	.todo-wrapper {
-		@apply flex gap-x-4 p-3.5 items-center;
-		@apply bg-Very-Dark-Desaturated-Blue;
-		@apply border-b-[1px] border-Very-Dark-Grayish-Blue;
-		@apply text-white md:text-lg;
-	}
-	.todo-checked {
-		@apply bg-gradient-to-br from-gradient-1 to-gradient-2;
-		@apply py-[7px] px-1.5;
-	}
-	.todo-unchecked {
-		@apply w-[23px] aspect-square border-[1px] border-Very-Dark-Grayish-Blue;
-	}
-	.todo__input {
-		@apply placeholder:text-gray-500;
-		@apply focus:border-0 focus:outline-none;
-		@apply bg-transparent;
-	}
+  .todo-wrapper {
+    @apply flex gap-x-4 p-3.5 items-center;
+    @apply bg-Very-Dark-Desaturated-Blue;
+    @apply border-b-[1px] border-Very-Dark-Grayish-Blue;
+    @apply text-white md:text-lg;
+  }
+  .todo-checked {
+    @apply bg-gradient-to-br from-gradient-1 to-gradient-2;
+    @apply py-[7px] px-1.5;
+  }
+  .todo-unchecked {
+    @apply w-[23px] aspect-square border-[1px] border-Very-Dark-Grayish-Blue;
+  }
+  .todo__input {
+    @apply placeholder:text-gray-500;
+    @apply focus:border-0 focus:outline-none;
+    @apply bg-transparent;
+  }
+  .button {
+    @apply uppercase cursor-pointer;
+    @apply py-2 px-4;
+    @apply bg-Very-Dark-Grayish-Blue rounded-md;
+    @apply hover:bg-Dark-Grayish-Blue;
+    @apply transition-colors;
+  }
 }
 
 @layer utilities {
-	.padding-app {
-		@apply px-6 md:px-32 xl:px-[32%] 2xl:px-[36%];
-	}
+  .padding-app {
+    @apply px-6 md:px-32 xl:px-[32%] 2xl:px-[36%];
+  }
 }
