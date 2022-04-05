@@ -17,13 +17,13 @@ const TodoList = () => {
           <TodoItem todo={'jag around the park 3x'} />
           <TodoItem todo={'10 minutes meditation'} />
           <TodoItem todo={'Read for 1 hour flkasdj jfkladsf jfklajkfj jfakdsfj lsakjalf'} />
-          <p className='todo-wrapper justify-between rounded-b-md border-0 font-semibold text-Very-Dark-Grayish-Blue text-sm'>
+          <div className='todo-wrapper justify-between rounded-b-md border-0 font-semibold text-Very-Dark-Grayish-Blue text-sm'>
             <span>5 items left</span>
             <div className='todo__filter hidden lg:flex'>
               <TodoFilters />
             </div>
             <button type='button' className='font-semibold'>Clear Completed</button>
-          </p>
+          </div>
 
           <div className='todo__filter flex lg:hidden'>
             <TodoFilters />
