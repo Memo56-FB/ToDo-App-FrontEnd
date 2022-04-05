@@ -8,7 +8,7 @@ import { UserContext } from '../../../../context/UserContext'
 const Login = () => {
   const { register, handleSubmit } = useForm()
   const navigate = useNavigate()
-  const { setUserData } = useContext(UserContext)
+  const { setUserData, setLogged } = useContext(UserContext)
 
   const fetchLogin = async (data) => {
     const API_URL = `${import.meta.env.VITE_API_URL}/api/login`
@@ -25,6 +25,7 @@ const Login = () => {
       const response = await fetchResponse.json()
       if (fetchResponse.status === 200) {
         setUserData(response)
+        setLogged(true)
         navigate('/todos')
       }
     } catch (err) {
