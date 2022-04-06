@@ -39,7 +39,18 @@
     @apply py-2 px-4;
     @apply bg-Very-Dark-Grayish-Blue rounded-md;
     @apply hover:bg-Dark-Grayish-Blue;
+    @apply disabled:bg-Very-Dark-Grayish-Blue/40 disabled:cursor-default;
     @apply transition-colors;
+  }
+  .spinner {
+    @apply border-4 border-Very-Dark-Blue/70;
+    @apply border-l-Very-Dark-Blue;
+    @apply rounded-full;
+    @apply w-7 h-7;
+    @apply animate-spin;
+  }
+  .text-validation {
+    @apply text-dark-validation;
   }
 }
 
