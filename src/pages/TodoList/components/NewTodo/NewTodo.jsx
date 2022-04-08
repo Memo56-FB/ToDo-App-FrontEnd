@@ -1,37 +1,39 @@
-import { useState } from 'react'
+import { useForm } from 'react-hook-form'
 
-const NewTodo = ({ register }) => {
-  const [todoChecked, setTodoChecked] = useState(false)
+const NewTodo = ({ token }) => {
+  const { register, handleSubmit } = useForm()
 
-  const toggleCheckedTodo = e => {
-    setTodoChecked(!todoChecked)
+  const addTodo = async (data) => {
+    const API_URL = `${import.meta.env.VITE_API_URL}/api/todo`
+    const settings = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `bearer ${token}`
+      },
+      body: JSON.stringify(data)
+    }
+
+    try {
+      const fetchResponse = await fetch(API_URL, settings)
+      const data = await fetchResponse.json()
+      console.log(data)
+    } catch (err) {
+      console.error(err)
+    }
   }
+
   return (
-    <label className='todo-wrapper rounded-md border-0'>
-      <button
-        type='submit'
-        onClick={toggleCheckedTodo}
-        className={`rounded-full cursor-pointer ${
-          todoChecked ? 'todo-checked' : 'todo-unchecked'
-        }`}
-      >
-        {todoChecked && (
-          <svg xmlns='http://www.w3.org/2000/svg' width='11' height='9'>
-            <path
-              fill='none'
-              stroke='#FFF'
-              strokeWidth='2'
-              d='M1 4.304L3.696 7l6-6'
-            />
-          </svg>
-        )}
-      </button>
-      <input
-        {...register('content')}
-        placeholder='Create a new todo...'
-        className='todo__input'
-      />
-    </label>
+    <form onSubmit={handleSubmit(addTodo)}>
+      <label className='todo-wrapper justify-between rounded-md border-0'>
+        <input
+          {...register('content')}
+          placeholder='Create a new todo...'
+          className='todo__input w-full'
+        />
+        <button type='submit' className="whitespace-nowrap">Add Todo</button>
+      </label>
+    </form>
   )
 }
 
