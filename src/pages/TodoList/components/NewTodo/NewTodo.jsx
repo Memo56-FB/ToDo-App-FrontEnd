@@ -1,15 +1,15 @@
 import { useState } from 'react'
 
-const NewTodo = () => {
+const NewTodo = ({ register }) => {
   const [todoChecked, setTodoChecked] = useState(false)
 
   const toggleCheckedTodo = e => {
-    e.preventDefault()
     setTodoChecked(!todoChecked)
   }
   return (
     <label className='todo-wrapper rounded-md border-0'>
-      <button type='button'
+      <button
+        type='submit'
         onClick={toggleCheckedTodo}
         className={`rounded-full cursor-pointer ${
           todoChecked ? 'todo-checked' : 'todo-unchecked'
@@ -27,8 +27,7 @@ const NewTodo = () => {
         )}
       </button>
       <input
-        type='text'
-        name='new'
+        {...register('content')}
         placeholder='Create a new todo...'
         className='todo__input'
       />

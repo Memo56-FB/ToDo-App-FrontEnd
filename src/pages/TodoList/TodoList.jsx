@@ -1,3 +1,5 @@
+import { useForm } from 'react-hook-form'
+
 import { Header } from '../../components/Header/Header'
 import { NewTodo } from './components/NewTodo/NewTodo'
 import { TodoFilters } from './components/TodoFilters/TodoFilters'
@@ -6,12 +8,34 @@ import { TodoItem } from './components/TodoItem/TodoItem'
 import './TodoList.scss'
 
 const TodoList = () => {
+  const { register, handleSubmit } = useForm()
+
+  const addTodo = async (data) => {
+    const API_URL = `${import.meta.env.VITE_API_URL}/api/todo`
+    const settings = {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'applicaton/json'
+      },
+      body: JSON.stringify(data)
+    }
+
+    try {
+      const fetchResponse = await fetch(API_URL, settings)
+      const data = await fetchResponse.json()
+      console.log(data)
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
   return (
     <>
       <Header />
       <main className='padding-app flex flex-col w-full  absolute -mt-20 md:-mt-12 lg:-mt-24 2xl:-mt-44'>
-        <form>
-          <NewTodo />
+        <form onSubmit={handleSubmit(addTodo)}>
+          <NewTodo register={register} />
         </form>
         <section className='mt-4'>
           <TodoItem todo={'jag around the park 3x'} />
