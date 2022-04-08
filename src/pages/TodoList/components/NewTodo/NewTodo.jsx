@@ -17,7 +17,9 @@ const NewTodo = ({ token }) => {
     try {
       const fetchResponse = await fetch(API_URL, settings)
       const data = await fetchResponse.json()
-      console.log(data)
+      if (fetchResponse.status === 201) {
+        console.log(data)
+      }
     } catch (err) {
       console.error(err)
     }
@@ -31,7 +33,7 @@ const NewTodo = ({ token }) => {
           placeholder='Create a new todo...'
           className='todo__input w-full'
         />
-        <button type='submit' className="whitespace-nowrap">Add Todo</button>
+        <button type='submit' className="whitespace-nowrap uppercase border-2 border-Dark-Grayish-Blue rounded-md px-2">Add Todo</button>
       </label>
     </form>
   )
