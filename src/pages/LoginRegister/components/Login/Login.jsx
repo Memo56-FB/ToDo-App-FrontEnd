@@ -42,6 +42,10 @@ const Login = () => {
         setLoading(false)
         setErrorMessage(response.error)
       }
+      if (fetchResponse.status === 401) {
+        setLoading(false)
+        setErrorMessage(response.error)
+      }
     } catch (err) {
       setLoading(false)
       console.error(err)
