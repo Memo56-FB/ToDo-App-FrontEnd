@@ -42,7 +42,10 @@ const TodoList = () => {
         <NewTodo token={userData.token} setTodos={setTodos} todos={todos} />
         <section className='mt-4'>
           {todos.map(todo => {
-            if (todo.user.username === userData.username || todo.user === userData.id) return <TodoItem key={todo.id} todo={todo.content} />
+            if (
+              todo.user.username === userData.username ||
+              todo.user === userData.id
+            ) { return <TodoItem key={todo.id} todo={todo} /> }
             return null
           })}
           <div className='todo-wrapper justify-between rounded-b-md border-0 font-semibold text-Very-Dark-Grayish-Blue text-sm'>
@@ -50,7 +53,9 @@ const TodoList = () => {
             <div className='todo__filter hidden lg:flex'>
               <TodoFilters />
             </div>
-            <button type='button' className='font-semibold'>Clear Completed</button>
+            <button type='button' className='font-semibold'>
+              Clear Completed
+            </button>
           </div>
 
           <div className='todo__filter flex lg:hidden'>
@@ -58,9 +63,7 @@ const TodoList = () => {
           </div>
         </section>
         <footer className='grid place-items-center mt-12 text-Very-Dark-Grayish-Blue font-semibold text-sm'>
-          <p>
-            Drag and drop to reorder list
-          </p>
+          <p>Drag and drop to reorder list</p>
         </footer>
       </main>
     </>
