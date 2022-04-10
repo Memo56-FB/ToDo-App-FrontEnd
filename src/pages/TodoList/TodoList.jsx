@@ -45,7 +45,7 @@ const TodoList = () => {
             if (
               todo.user.username === userData.username ||
               todo.user === userData.id
-            ) { return <TodoItem key={todo.id} todo={todo} /> }
+            ) { return <TodoItem key={todo.id} todo={todo} token={userData.token} /> }
             return null
           })}
           <div className='todo-wrapper justify-between rounded-b-md border-0 font-semibold text-Very-Dark-Grayish-Blue text-sm'>
