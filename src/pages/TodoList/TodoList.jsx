@@ -33,16 +33,16 @@ const TodoList = () => {
 
   useEffect(() => {
     getTodos()
-  }, [])
+  }, [todos])
 
   return (
     <>
       <Header />
       <main className='padding-app flex flex-col w-full  absolute -mt-20 md:-mt-12 lg:-mt-24 2xl:-mt-44'>
-        <NewTodo token={userData.token} />
+        <NewTodo token={userData.token} setTodos={setTodos} todos={todos} />
         <section className='mt-4'>
           {todos.map(todo => {
-            if (todo.user.username === userData.username) return <TodoItem key={todo.id} todo={todo.content} />
+            if (todo.user.username === userData.username || todo.user === userData.id) return <TodoItem key={todo.id} todo={todo.content} />
             return null
           })}
           <div className='todo-wrapper justify-between rounded-b-md border-0 font-semibold text-Very-Dark-Grayish-Blue text-sm'>

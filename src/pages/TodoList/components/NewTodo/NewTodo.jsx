@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form'
 
-const NewTodo = ({ token }) => {
-  const { register, handleSubmit } = useForm()
+const NewTodo = ({ token, setTodos, todos }) => {
+  const { register, handleSubmit, reset } = useForm()
 
   const addTodo = async (data) => {
     const API_URL = `${import.meta.env.VITE_API_URL}/api/todo`
@@ -18,7 +18,9 @@ const NewTodo = ({ token }) => {
       const fetchResponse = await fetch(API_URL, settings)
       const data = await fetchResponse.json()
       if (fetchResponse.status === 201) {
-        console.log(data)
+        const newTodosArray = todos.concat(data)
+        setTodos(newTodosArray)
+        reset()
       }
     } catch (err) {
       console.error(err)
