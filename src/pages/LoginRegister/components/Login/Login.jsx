@@ -35,12 +35,8 @@ const Login = () => {
         setUserData(response)
         setLoading(false)
         setLogged(true)
-        navigate('/todos')
+        navigate('/')
         sessionStorage.setItem('todoUserData', JSON.stringify(response))
-      }
-      if (fetchResponse.status === 401) {
-        setLoading(false)
-        setErrorMessage(response.error)
       }
       if (fetchResponse.status === 401) {
         setLoading(false)
