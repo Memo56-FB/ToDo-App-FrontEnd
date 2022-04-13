@@ -21,9 +21,8 @@ const ToggleTodoComplete = ({ todo, token }) => {
     }
 
     try {
-      const fetchResponse = await fetch(API_URL, settings)
-      const data = await fetchResponse.json()
-      console.log(data)
+      // TODO: agregar validaciones en caso de 200 o 400
+      await fetch(API_URL, settings)
       setLoading(false)
     } catch (err) {
       console.error(err)
