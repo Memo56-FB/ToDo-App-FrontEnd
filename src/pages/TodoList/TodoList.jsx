@@ -23,10 +23,9 @@ const TodoList = () => {
     try {
       const fetchResponse = await fetch(API_URL, settings)
       const data = await fetchResponse.json()
-      const newData = data.filter(todo => todo.user.username === userData.username)
 
       if (fetchResponse.status === 200) {
-        setTodos(newData)
+        setTodos(data)
       }
     } catch (err) {
       console.error(err)
@@ -48,24 +47,23 @@ const TodoList = () => {
 
   useEffect(() => {
     getTodos()
-    console.log(todos)
-  }, [todos.length])
-  console.log('render')
+  }, [])
   return (
     <>
       <Header />
       <main className='padding-app flex flex-col w-full  absolute -mt-20 md:-mt-12 lg:-mt-24 2xl:-mt-44'>
         <NewTodo token={userData.token} setTodos={setTodos} todos={todos} />
         <section className='mt-4'>
-          {todos.map(todo => (
-            <TodoItem
+          {todos.map(todo => {
+            if(todo.user.id === userData.userId || todo.user === userData.userId){
+            return (<TodoItem
               key={todo.id}
               todo={todo}
               todos={todos}
               setTodos={setTodos}
               token={userData.token}
-            />
-          ))}
+            />)}
+          })}
           <div className='todo-wrapper justify-between rounded-b-md border-0 font-semibold text-Very-Dark-Grayish-Blue text-sm'>
             <span>5 items left</span>
             <div className='todo__filter hidden lg:flex'>

@@ -18,8 +18,8 @@ const NewTodo = ({ token, setTodos, todos }) => {
       const fetchResponse = await fetch(API_URL, settings)
       const data = await fetchResponse.json()
       if (fetchResponse.status === 201) {
-        const newTodosArray = todos.concat(data)
-        setTodos(newTodosArray)
+        const newTodos = todos.concat(data)
+        setTodos(newTodos)
         reset()
       }
     } catch (err) {
