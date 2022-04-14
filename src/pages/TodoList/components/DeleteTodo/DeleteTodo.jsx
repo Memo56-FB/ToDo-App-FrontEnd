@@ -2,7 +2,7 @@ import { useContext } from 'react'
 
 import { UserContext } from '../../../../context/UserContext'
 
-const DeleteTodo = ({ todo }) => {
+const DeleteTodo = ({ todo, todos, setTodos }) => {
   const { userData } = useContext(UserContext)
 
   const removeTodo = async () => {
@@ -15,7 +15,11 @@ const DeleteTodo = ({ todo }) => {
     }
 
     try {
-      await fetch(API_URL, settings)
+      const fetchResponse = await fetch(API_URL, settings)
+      if (fetchResponse.status === 204) {
+        const newTodos = todos.filter(todoFilter => todoFilter.id !== todo.id)
+        setTodos(newTodos)
+      }
     } catch (err) {
       console.error(err)
     }
