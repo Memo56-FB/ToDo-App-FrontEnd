@@ -30,10 +30,23 @@ const TodoList = () => {
       console.error(err)
     }
   }
+  const filterAllTodos = () => {
+    getTodos()
+  }
+  const filterActiveTodos = () => {
+    let activeTodos = []
+    activeTodos = todos.filter(todo => !todo.complete)
+    setTodos(activeTodos)
+  }
+  const filterCompletedTodos = () => {
+    let activeTodos = []
+    activeTodos = todos.filter(todo => todo.complete)
+    setTodos(activeTodos)
+  }
 
   useEffect(() => {
     getTodos()
-  }, [todos])
+  }, [])
 
   return (
     <>
@@ -51,7 +64,7 @@ const TodoList = () => {
           <div className='todo-wrapper justify-between rounded-b-md border-0 font-semibold text-Very-Dark-Grayish-Blue text-sm'>
             <span>5 items left</span>
             <div className='todo__filter hidden lg:flex'>
-              <TodoFilters />
+              <TodoFilters filterAllTodos={filterAllTodos} filterActiveTodos={filterActiveTodos} filterCompletedTodos={filterCompletedTodos} />
             </div>
             <button type='button' className='font-semibold'>
               Clear Completed
@@ -59,7 +72,7 @@ const TodoList = () => {
           </div>
 
           <div className='todo__filter flex lg:hidden'>
-            <TodoFilters />
+            <TodoFilters filterAllTodos={filterAllTodos} filterActiveTodos={filterActiveTodos} filterCompletedTodos={filterCompletedTodos} />
           </div>
         </section>
         <footer className='grid place-items-center mt-12 text-Very-Dark-Grayish-Blue font-semibold text-sm'>

@@ -1,9 +1,9 @@
-const TodoFilters = () => {
+const TodoFilters = ({ filterAllTodos, filterActiveTodos, filterCompletedTodos }) => {
   return (
     <>
-      <p>All</p>
-      <p>Active</p>
-      <p>Completed</p>
+      <button onClick={filterAllTodos}>All</button>
+      <button onClick={filterActiveTodos}>Active</button>
+      <button onClick={filterCompletedTodos}>Completed</button>
     </>
   )
 }
