@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from 'react'
+import { set } from 'react-hook-form'
 
 import { Header } from '../../components/Header/Header'
 import { UserContext } from '../../context/UserContext'
@@ -11,6 +12,11 @@ import './TodoList.scss'
 const TodoList = () => {
   const { userData } = useContext(UserContext)
   const [todos, setTodos] = useState([])
+  const [completed, setCompleted] = useState(undefined)
+
+  const allTodos = todos
+  const activeTodos = todos.filter(todo => !todo.complete)
+  const completedTodos = todos.filter(todo => todo.complete)
 
   const getTodos = async () => {
     const API_URL = `${import.meta.env.VITE_API_URL}/api/todo`
@@ -32,22 +38,19 @@ const TodoList = () => {
     }
   }
   const filterAllTodos = () => {
-    getTodos()
+    setCompleted(undefined)
   }
   const filterActiveTodos = () => {
-    let activeTodos = []
-    activeTodos = todos.filter(todo => !todo.complete)
-    setTodos(activeTodos)
+    setCompleted(false)
   }
   const filterCompletedTodos = () => {
-    let activeTodos = []
-    activeTodos = todos.filter(todo => todo.complete)
-    setTodos(activeTodos)
+    setCompleted(true)
   }
 
   useEffect(() => {
     getTodos()
   }, [])
+  console.count('Render: ')
   return (
     <>
       <Header />
@@ -56,6 +59,8 @@ const TodoList = () => {
         <section className='mt-4'>
           {todos.map(todo => {
             if(todo.user.id === userData.userId || todo.user === userData.userId){
+              if(completed && !todo.complete) return null
+              if(completed === false && todo.complete) return null
             return (<TodoItem
               key={todo.id}
               todo={todo}
