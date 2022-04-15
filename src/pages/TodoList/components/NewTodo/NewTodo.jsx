@@ -1,7 +1,9 @@
 import { useForm } from 'react-hook-form'
+import { useState } from 'react'
 
 const NewTodo = ({ token, setTodos, todos }) => {
   const { register, handleSubmit, reset } = useForm()
+  const [loading, setLoading] = useState(false)
 
   const addTodo = async (data) => {
     const API_URL = `${import.meta.env.VITE_API_URL}/api/todo`
@@ -15,14 +17,21 @@ const NewTodo = ({ token, setTodos, todos }) => {
     }
 
     try {
+      setLoading(true)
       const fetchResponse = await fetch(API_URL, settings)
       const data = await fetchResponse.json()
       if (fetchResponse.status === 201) {
+        setLoading(false)
         const newTodos = todos.concat(data)
         setTodos(newTodos)
         reset()
       }
+      if (fetchResponse.status === 400) {
+        setLoading(false)
+        window.alert('Algo salio mal, intentalo mas tarde')
+      }
     } catch (err) {
+      setLoading(false)
       console.error(err)
     }
   }
@@ -35,7 +44,9 @@ const NewTodo = ({ token, setTodos, todos }) => {
           placeholder='Create a new todo...'
           className='todo__input w-full'
         />
-        <button type='submit' className="whitespace-nowrap uppercase border-2 border-Dark-Grayish-Blue rounded-md px-2">Add Todo</button>
+        <button type='submit' disabled={loading} className="whitespace-nowrap uppercase border-2 border-Dark-Grayish-Blue rounded-md px-2">
+          {loading ? <div className="spinner" /> : 'Add Todo'}
+        </button>
       </label>
     </form>
   )

@@ -8,15 +8,12 @@ import { TodoFilters } from './components/TodoFilters/TodoFilters'
 import { TodoItem } from './components/TodoItem/TodoItem'
 
 import './TodoList.scss'
-
+// ? tal vez puedo meter en un contexto los todos al registrarse o inicar sesión
+// ? despues de eso aqui puedo traer la longitud y los todos filtrados sin problema
 const TodoList = () => {
   const { userData } = useContext(UserContext)
   const [todos, setTodos] = useState([])
   const [completed, setCompleted] = useState(undefined)
-
-  const allTodos = todos
-  const activeTodos = todos.filter(todo => !todo.complete)
-  const completedTodos = todos.filter(todo => todo.complete)
 
   const getTodos = async () => {
     const API_URL = `${import.meta.env.VITE_API_URL}/api/todo`
@@ -50,6 +47,7 @@ const TodoList = () => {
   useEffect(() => {
     getTodos()
   }, [])
+ 
   console.count('Render: ')
   return (
     <>
@@ -70,7 +68,7 @@ const TodoList = () => {
             />)}
           })}
           <div className='todo-wrapper justify-between rounded-b-md border-0 font-semibold text-Very-Dark-Grayish-Blue text-sm'>
-            <span>5 items left</span>
+            {/* <span>{counterItems} items left</span> */}
             <div className='todo__filter hidden lg:flex'>
               <TodoFilters
                 filterAllTodos={filterAllTodos}
@@ -78,9 +76,9 @@ const TodoList = () => {
                 filterCompletedTodos={filterCompletedTodos}
               />
             </div>
-            <button type='button' className='font-semibold'>
+            {/* <button type='button' className='font-semibold'>
               Clear Completed
-            </button>
+            </button> */}
           </div>
 
           <div className='todo__filter flex lg:hidden'>
