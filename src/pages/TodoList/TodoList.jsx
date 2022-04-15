@@ -67,9 +67,9 @@ const TodoList = () => {
               token={userData.token}
             />)}
           })}
-          <div className='todo-wrapper justify-between rounded-b-md border-0 font-semibold text-Very-Dark-Grayish-Blue text-sm'>
+          <div className='todo-wrapper justify-center rounded-b-md border-0 font-semibold text-Very-Dark-Grayish-Blue text-sm'>
             {/* <span>{counterItems} items left</span> */}
-            <div className='todo__filter hidden lg:flex'>
+            <div className='todo__filter flex'>
               <TodoFilters
                 filterAllTodos={filterAllTodos}
                 filterActiveTodos={filterActiveTodos}
@@ -81,7 +81,7 @@ const TodoList = () => {
             </button> */}
           </div>
 
-          <div className='todo__filter flex lg:hidden'>
+          <div className='todo__filter hidden'>
             <TodoFilters
               filterAllTodos={filterAllTodos}
               filterActiveTodos={filterActiveTodos}

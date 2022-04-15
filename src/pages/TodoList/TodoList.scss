@@ -1,7 +1,7 @@
 .todo__filter {
   @apply bg-Very-Dark-Desaturated-Blue text-Very-Dark-Grayish-Blue text-sm;
   @apply justify-center rounded-md;
-  @apply p-3 mt-4 lg:mt-0 lg:p-0 gap-x-4;
+  @apply gap-x-4;
   button {
     @apply hover:text-Light-Grayish-Blue(hover);
     @apply font-semibold;

@@ -21,7 +21,9 @@
     @apply bg-Very-Dark-Desaturated-Blue;
     @apply border-b-[1px] border-Very-Dark-Grayish-Blue;
     @apply text-white md:text-lg;
+    @apply first:rounded-t-md;
   }
+ 
   .todo-checked {
     @apply bg-gradient-to-br from-gradient-1 to-gradient-2;
     @apply py-[7px] px-1.5;
