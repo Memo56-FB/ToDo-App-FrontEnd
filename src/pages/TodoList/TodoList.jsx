@@ -75,6 +75,7 @@ const TodoList = () => {
                 filterAllTodos={filterAllTodos}
                 filterActiveTodos={filterActiveTodos}
                 filterCompletedTodos={filterCompletedTodos}
+                completed={completed}
               />
             </div>
             {/* <button type='button' className='font-semibold'>
