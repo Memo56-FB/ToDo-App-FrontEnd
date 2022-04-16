@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react'
 
+import { motion } from 'framer-motion'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
@@ -88,13 +89,14 @@ const Login = () => {
             autoComplete='password'
           />
         </label>
-        <button
+        <motion.button
+          whileTap={{ scale: 0.95 }}
           type='submit'
           disabled={loading}
           className='button flex justify-center'
         >
           {loading ? <div className='spinner' /> : 'Enviar'}
-        </button>
+        </motion.button>
       </form>
     </>
   )

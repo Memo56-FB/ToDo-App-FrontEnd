@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
@@ -41,9 +42,13 @@ const Register = () => {
           autoComplete='new-password'
         />
       </label>
-      <button type="submit" className='button'>
+      <motion.button
+        whileTap={{ scale: 0.95 }}
+        type="submit"
+        className='button'
+      >
         Enviar
-      </button>
+      </motion.button>
     </form>
   )
 }

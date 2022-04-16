@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+import { motion } from 'framer-motion'
 import { useForm } from 'react-hook-form'
 
 const NewTodo = ({ token, setTodos, todos }) => {
@@ -51,9 +52,14 @@ const NewTodo = ({ token, setTodos, todos }) => {
           placeholder='Create a new todo...'
           className='todo__input w-full'
         />
-        <button type='submit' disabled={loading} className="whitespace-nowrap uppercase border-2 border-Dark-Grayish-Blue rounded-md px-2">
+        <motion.button
+          whileTap={{ scale: 0.95 }}
+          type='submit'
+          disabled={loading}
+          className="whitespace-nowrap uppercase border-2 border-Dark-Grayish-Blue rounded-md px-2"
+        >
           {loading ? <div className="spinner" /> : 'Add Todo'}
-        </button>
+        </motion.button>
       </label>
     </form>
   )
