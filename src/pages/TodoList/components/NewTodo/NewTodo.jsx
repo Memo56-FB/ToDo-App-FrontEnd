@@ -1,5 +1,6 @@
-import { useForm } from 'react-hook-form'
 import { useState } from 'react'
+
+import { useForm } from 'react-hook-form'
 
 const NewTodo = ({ token, setTodos, todos }) => {
   const { register, handleSubmit, reset } = useForm()

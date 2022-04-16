@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from 'react'
-import { set } from 'react-hook-form'
 
 import { Header } from '../../components/Header/Header'
 import { UserContext } from '../../context/UserContext'
@@ -8,7 +7,6 @@ import { TodoFilters } from './components/TodoFilters/TodoFilters'
 import { TodoItem } from './components/TodoItem/TodoItem'
 
 import './TodoList.scss'
-//! this a test
 // ? tal vez puedo meter en un contexto los todos al registrarse o inicar sesión
 // ? despues de eso aqui puedo traer la longitud y los todos filtrados sin problema
 const TodoList = () => {
@@ -48,7 +46,7 @@ const TodoList = () => {
   useEffect(() => {
     getTodos()
   }, [])
- 
+
   console.count('Render: ')
   return (
     <>
@@ -57,16 +55,18 @@ const TodoList = () => {
         <NewTodo token={userData.token} setTodos={setTodos} todos={todos} />
         <section className='mt-4'>
           {todos.map(todo => {
-            if(todo.user.id === userData.userId || todo.user === userData.userId){
-              if(completed && !todo.complete) return null
-              if(completed === false && todo.complete) return null
-            return (<TodoItem
+            if (todo.user.id === userData.userId || todo.user === userData.userId) {
+              if (completed && !todo.complete) return null
+              if (completed === false && todo.complete) return null
+              return (<TodoItem
               key={todo.id}
               todo={todo}
               todos={todos}
               setTodos={setTodos}
               token={userData.token}
-            />)}
+            />)
+            }
+            return null
           })}
           <div className='todo-wrapper justify-center rounded-b-md border-0 font-semibold text-Very-Dark-Grayish-Blue text-sm'>
             {/* <span>{counterItems} items left</span> */}
