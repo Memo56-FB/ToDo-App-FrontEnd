@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 const NewTodo = ({ token, setTodos, todos }) => {
-  const { register, handleSubmit, reset } = useForm()
+  const { register, handleSubmit, reset, formState: { errors } } = useForm()
   const [loading, setLoading] = useState(false)
 
   const addTodo = async (data) => {
@@ -39,9 +39,15 @@ const NewTodo = ({ token, setTodos, todos }) => {
 
   return (
     <form onSubmit={handleSubmit(addTodo)}>
+      <p className="animate-pulse text-white font-semibold">{errors.content?.message}</p>
       <label className='todo-wrapper justify-between rounded-md border-0'>
         <input
-          {...register('content')}
+          {...register('content', {
+            required: {
+              value: true,
+              message: 'Write something'
+            }
+          })}
           placeholder='Create a new todo...'
           className='todo__input w-full'
         />
